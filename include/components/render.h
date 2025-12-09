@@ -8,6 +8,7 @@ typedef enum {
     RENDER_NONE,
     RENDER_CIRCLE,
     RENDER_RECT,
+    RENDER_LINE,
     RENDER_TEXTURE
 } RenderType;
 
@@ -24,6 +25,10 @@ typedef struct {
             float height;
             int filled;
         } shape;
+        struct {
+            float end_x;
+            float end_y;
+        } line;
         struct {
             SDL_Texture* texture;
             float width;
