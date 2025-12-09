@@ -1,0 +1,15 @@
+/build/
+/build/*
+*.exe
+*.obj
+*.dll
+*.lib
+*.a
+*.def
+*.la
+*.log
+*.o
+
+.vscode/
+*.swp
+*~
