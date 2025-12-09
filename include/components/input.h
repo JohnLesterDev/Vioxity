@@ -1,5 +1,5 @@
-#ifndef INPUT_H
-#define INPUT_H
+#ifndef COMPONENTS_INPUT_H
+#define COMPONENTS_INPUT_H
 
 #include <stdint.h>
 

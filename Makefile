@@ -7,7 +7,10 @@ OBJ_DIR = $(BUILD_DIR)\obj
 
 TARGET = $(BUILD_DIR)\$(TARGET_NAME)
 
-SOURCES = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/core/*.c)
+SOURCES = $(wildcard $(SRC_DIR)/*.c) \
+          $(wildcard $(SRC_DIR)/core/*.c) \
+          $(wildcard $(SRC_DIR)/scenes/*.c) \
+          $(wildcard $(SRC_DIR)/systems/*.c)
 
 OBJECTS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SOURCES))
 
@@ -18,7 +21,7 @@ LIBRARY_PATHS = -L lib/lib
 SDL_DLL = lib\SDL2.dll
 OPENAL_DLL = lib\soft_oal.dll
 
-LINKER_FLAGS = $(LIBRARY_PATHS) -lSDL2 -lOpenAL32
+LINKER_FLAGS = $(LIBRARY_PATHS) -lSDL2 -lOpenAL32 -lm
 
 all: $(TARGET)
 

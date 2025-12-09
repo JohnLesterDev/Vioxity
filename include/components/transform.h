@@ -1,5 +1,5 @@
-#ifndef TRANSFORM_H
-#define TRANSFORM_H
+#ifndef COMPONENT_TRANSFORM_H
+#define COMPONENT_TRANSFORM_H
 
 typedef struct {
     float x;

@@ -1,5 +1,5 @@
-#ifndef MANAGER_H
-#define MANAGER_H
+#ifndef COMPONENT_MANAGER_H
+#define COMPONENT_MANAGER_H
 
 typedef enum {
     COMPONENT_NONE = 0,

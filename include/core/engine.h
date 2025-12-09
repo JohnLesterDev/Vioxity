@@ -24,9 +24,9 @@ int Engine_Init(
 int Engine_QuitRequest(void);
 void Engine_Quit(void);
 
-EngineSource* Engine_Get_Source(void);
-SDL_Window* Engine_Get_Window(void);
-SDL_Renderer* Engine_Get_Renderer(void);
+EngineSource* Engine_GetSource(void);
+SDL_Window* Engine_GetWindow(void);
+SDL_Renderer* Engine_GetRenderer(void);
 
 void Engine_ClearScreen(int r, int g, int b, int a);
 void Engine_Present(void);

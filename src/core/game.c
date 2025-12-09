@@ -3,8 +3,14 @@
 #include <core/logging.h>
 #include <stdio.h>
 
-static GameFlags_u8 game_flags = { 0 };
+#include <SDL2/SDL.h>
+#include <scenes/prototype.h>
+#include <systems/entity_render.h>
+
+static World world;
 static SDL_Event event;
+
+static GameFlags_u8 game_flags = { 0 };
 
 int Game_Init(void)
 {
@@ -15,7 +21,10 @@ int Game_Init(void)
 
     game_flags.is_running = 1;
 
-    SDL_ShowCursor(SDL_DISABLE);
+    // SDL_ShowCursor(SDL_DISABLE);
+
+    ECS_WorldInit(&world);
+    Scene_PrototypeInit(&world);
 
     return 0;
 }
@@ -30,6 +39,8 @@ void Game_Test(void)
 
 void Game_Run(void)
 {
+    float delta_time = 0.016f;
+
     while (game_flags.is_running && !Engine_QuitRequest()) {
         Engine_ClearScreen(0, 0, 0, 255);
 
@@ -42,6 +53,10 @@ void Game_Run(void)
                 break;
             }
         }
+
+        Scene_PrototypeUpdate(&world, delta_time);
+
+        Scene_PrototypeRender(&world, Engine_GetRenderer());
 
         Engine_Present();
     }

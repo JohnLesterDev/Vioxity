@@ -1,5 +1,5 @@
-#ifndef RENDER_H
-#define RENDER_H
+#ifndef COMPONENT_RENDER_H
+#define COMPONENT_RENDER_H
 
 #include <SDL2/SDL.h>
 #include <stdint.h>
@@ -22,6 +22,7 @@ typedef struct {
             float radius;
             float width;
             float height;
+            int filled;
         } shape;
         struct {
             SDL_Texture* texture;

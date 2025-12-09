@@ -126,17 +126,17 @@ void Engine_Quit(void)
     LOG_INFO("Engine quit.\n");
 }
 
-EngineSource* Engine_Get_Source(void)
+EngineSource* Engine_GetSource(void)
 {
     return &g_engine_source;
 }
 
-SDL_Window* Engine_Get_Window(void)
+SDL_Window* Engine_GetWindow(void)
 {
     return g_engine_source.window;
 }
 
-SDL_Renderer* Engine_Get_Renderer(void)
+SDL_Renderer* Engine_GetRenderer(void)
 {
     return g_engine_source.renderer;
 }
@@ -144,7 +144,7 @@ SDL_Renderer* Engine_Get_Renderer(void)
 void Engine_ClearScreen(int r, int g, int b, int a)
 {
     SDL_SetRenderDrawColor(g_engine_source.renderer, r, g, b, a);
-    Engine_Present();
+    SDL_RenderClear(g_engine_source.renderer);
 }
 
 void Engine_Present(void)
