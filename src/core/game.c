@@ -15,6 +15,8 @@ int Game_Init(void)
 
     game_flags.is_running = 1;
 
+    SDL_ShowCursor(SDL_DISABLE);
+
     return 0;
 }
 
@@ -24,37 +26,6 @@ void Game_Test(void)
 
     int num_render_drivers = SDL_GetNumRenderDrivers();
     LOG_INFO("Total available render drivers: %d\n\n", num_render_drivers);
-
-    if (num_render_drivers < 1) {
-        LOG_INFO("No render drivers found.\n");
-    } else {
-        for (int i = 0; i < num_render_drivers; i++) {
-
-            SDL_RendererInfo info;
-
-            if (SDL_GetRenderDriverInfo(i, &info) == 0) {
-                LOG_INFO("--- Renderer Driver %d ---\n", i);
-
-                LOG_INFO("  - Name: %s\n", info.name);
-                LOG_INFO("  - Flags:\n");
-
-                if (info.flags & SDL_RENDERER_ACCELERATED) {
-                    LOG_INFO("    - ACCELERATED (Uses GPU)\n");
-                }
-                if (info.flags & SDL_RENDERER_PRESENTVSYNC) {
-                    LOG_INFO("    - VSYNC Capable\n");
-                }
-                if (info.flags & SDL_RENDERER_TARGETTEXTURE) {
-                    LOG_INFO("    - Render to Texture Capable\n");
-                }
-                if (info.flags & SDL_RENDERER_SOFTWARE) {
-                    LOG_INFO("    - SOFTWARE (Uses CPU only)\n");
-                }
-            } else {
-                LOG_INFO("Could not get info for driver %d: %s\n", i, SDL_GetError());
-            }
-        }
-    }
 }
 
 void Game_Run(void)
@@ -66,9 +37,6 @@ void Game_Run(void)
             switch (event.type) {
             case SDL_QUIT:
                 game_flags.is_running = 0;
-                break;
-            case SDL_MOUSEBUTTONDOWN:
-                fprintf(stdout, "Mouse button pressed at (%d, %d)\n", event.button.x, event.button.y);
                 break;
             default:
                 break;

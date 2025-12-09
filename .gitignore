@@ -2,7 +2,7 @@
 /build/*
 *.exe
 *.obj
-*.dll
+# *.dll
 *.lib
 *.a
 *.def
